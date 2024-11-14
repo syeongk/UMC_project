@@ -1,5 +1,6 @@
 package org.umc_project.study.domain.common;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 @Getter
 public abstract class BaseEntity {
 
+    @Column(columnDefinition = "DEFAULT NOW()", nullable = false)
     @CreatedDate
     private LocalDateTime createdAt;
 

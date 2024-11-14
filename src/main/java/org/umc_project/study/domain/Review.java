@@ -18,8 +18,7 @@ public class Review extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(precision = 3, scale = 2)
-    private BigDecimal rating;
+    private Float rating;
 
     @Column(nullable = false)
     private String content;

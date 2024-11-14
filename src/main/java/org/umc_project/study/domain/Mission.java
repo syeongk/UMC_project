@@ -3,7 +3,6 @@ package org.umc_project.study.domain;
 import jakarta.persistence.*;
 import lombok.*;
 import org.umc_project.study.domain.common.BaseEntity;
-import org.umc_project.study.domain.enums.MissionStatus;
 import org.umc_project.study.domain.mapping.UserMission;
 
 import java.util.ArrayList;
@@ -21,10 +20,6 @@ public class Mission extends BaseEntity {
 
     @Column(nullable = false)
     private String content;
-
-    @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "VARCHAR(20) DEFAULT 'PENDING'")
-    private MissionStatus status;
 
     private Integer duration;
 

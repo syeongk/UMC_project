@@ -22,23 +22,33 @@ public class Shop extends BaseEntity {
     @Column(nullable = false, length = 20)
     private String name;
 
-    @Column(precision = 3, scale = 2)
-    private BigDecimal rating;
+    private Float rating;
 
     private ShopStatus status;
 
     @Column(nullable = false)
     private String primary_address;
 
-    @Column(nullable = false)
     private String detailed_address;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "region_id")
+    private Region region;
 
     @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL)
     private List<Review> reviewList = new ArrayList<>();
 
     @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL)
-    private List<Region> regionList = new ArrayList<>();
-
-    @OneToMany(mappedBy = "shop", cascade = CascadeType.ALL)
     private List<Mission> missionList = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "Store{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + primary_address + '\'' +
+                ", rating=" + rating +
+                ", region=" + (region != null ? region.getName() : "N/A") +
+                "}";
+    }
 }
